@@ -65,7 +65,7 @@ var round2 = [
 	"marquee",
 	"fat arrow",
 	"responsive",
-	"position: fixed"
+	"position: fixed",
 	"clearfix",
 	"fade in",
 	"important!",
@@ -112,12 +112,31 @@ var round3 = [
 
 // Arrive on page and the avatar screen is displayed with instructions
 
-()
 
 // User clicks start button
 // Screen fades to play mode 
-// Clock is at 2:00min
+$('.start-button').on('click', function(){
+	$('.screen-1').css('opacity', '0');
+	$('.screen-2').css('opacity', '1');
+	startGame();
+});
+// Clock is at 2:00min (120seconds)
 // Team 1 clicks start button and random chrades card appears 
+var startGame = function(){
+	//start at 120 sec
+	var seconds = 120;
+	
+	var countdown = window.setInterval(function(){
+		//update div.timer with seconds left
+		$('.timer').html(seconds);
+		if (seconds===0) {
+			//when time is up stop countdown and empty div
+			window.clearInterval(countdown);
+			$('.timer').html('');
+		}seconds--;//decrease seconds by 1
+
+	},1000);
+}
 // Countdown clock begins
 // Every time user hits space bar a new charades card appears and a point is added to that team's total
 // When clock reaches 0 an overlay appears asking for the next team to come up.

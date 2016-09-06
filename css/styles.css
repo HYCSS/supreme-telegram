@@ -5,14 +5,22 @@
 
 /*RED #d12026 */
 /*BLACK #414042 */
-/*GREY ##adb2a8 */
+/*GREY #adb2a8 */
 
 /*FONTS ---------------------*/
 @font-face {
 	font-family: 'hyFont';
-	src: '../nimbus-sans-l/NimbusSansL-Reg.otf';
+	src: url('../nimbus-sans-l/NimbusSanL-Reg.otf');
 }
 
 h1 {
 	font-family: 'hyFont';
+}
+
+.screen-1, .screen-2, .screen-3 {
+	transition: opacity 0.4s;
+}
+
+.screen-2, .screen-3 {
+	opacity: 0;
 }
