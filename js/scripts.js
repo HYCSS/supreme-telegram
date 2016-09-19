@@ -1,14 +1,14 @@
 /*                                                                                               *\
-                   .__                       __                                            
-             ____  |  |__    ____    _______/  |_    ____________  _____     ____    ____  
-            / ___\ |  |  \  /  _ \  /  ___/\   __\  /  ___/\____ \ \__  \  _/ ___\ _/ __ \ 
-           / /_/  >|   Y  \(  <_> ) \___ \  |  |    \___ \ |  |_> > / __ \_\  \___ \  ___/ 
+                   .__                       __
+             ____  |  |__    ____    _______/  |_    ____________  _____     ____    ____
+            / ___\ |  |  \  /  _ \  /  ___/\   __\  /  ___/\____ \ \__  \  _/ ___\ _/ __ \
+           / /_/  >|   Y  \(  <_> ) \___ \  |  |    \___ \ |  |_> > / __ \_\  \___ \  ___/
            \___  / |___|  / \____/ /____  > |__|   /____  >|   __/ (____  / \___  > \___  >
-          /_____/       \/              \/              \/ |__|         \/      \/      \/ 
-                           __    .__ .__   .__           .__             
+          /_____/       \/              \/              \/ |__|         \/      \/      \/
+                           __    .__ .__   .__           .__
                           |  | __|__||  |  |  |  _____   |  |__    ______
                           |  |/ /|  ||  |  |  |  \__  \  |  |  \  /  ___/
-                          |    < |  ||  |__|  |__ / __ \_|   Y  \ \___ \ 
+                          |    < |  ||  |__|  |__ / __ \_|   Y  \ \___ \
                           |__|_ \|__||____/|____/(____  /|___|  //____  >
                                \/                     \/      \
 
@@ -17,18 +17,18 @@
                                         P  R  E  S  E  N  T
 
 
-              .__                      __                    _____.___.               
-              |  |__  _____     ____  |  | __  ____  _______ \__  |   |  ____   __ __ 
+              .__                      __                    _____.___.
+              |  |__  _____     ____  |  | __  ____  _______ \__  |   |  ____   __ __
               |  |  \ \__  \  _/ ___\ |  |/ /_/ __ \ \_  __ \ /   |   | /  _ \ |  |  \
               |   Y  \ / __ \_\  \___ |    < \  ___/  |  | \/ \____   |(  <_> )|  |  /
-              |___|  /(____  / \___  >|__|_ \ \___  > |__|    / ______| \____/ |____/ 
-                   \/      \/      \/      \/     \/          \/                      
-                     .___                 .__                                 .___                
+              |___|  /(____  / \___  >|__|_ \ \___  > |__|    / ______| \____/ |____/
+                   \/      \/      \/      \/     \/          \/
+                     .___                 .__                                 .___
    ____    ____    __| _/  ____     ____  |  |__  _____   _______ _____     __| _/  ____    ______
  _/ ___\  /  _ \  / __ | _/ __ \  _/ ___\ |  |  \ \__  \  \_  __ \\__  \   / __ | _/ __ \  /  ___/
- \  \___ (  <_> )/ /_/ | \  ___/  \  \___ |   Y  \ / __ \_ |  | \/ / __ \_/ /_/ | \  ___/  \___ \ 
+ \  \___ (  <_> )/ /_/ | \  ___/  \  \___ |   Y  \ / __ \_ |  | \/ / __ \_/ /_/ | \  ___/  \___ \
   \___  > \____/ \____ |  \___  >  \___  >|___|  /(____  / |__|   (____  /\____ |  \___  >/____  >
-      \/              \/      \/       \/      \/      \/              \/      \/      \/      \/ 
+      \/              \/      \/       \/      \/      \/              \/      \/      \/      \/
 
 \*                                                                                               */
 
@@ -103,7 +103,7 @@ var round2 = [
 	"fade in",
 	"important!",
 	"Simon Bloom",
-	"event listener", 
+	"event listener",
 	"JavaScript",
 	"master branch",
 	"filter",
@@ -112,7 +112,7 @@ var round2 = [
 	"calc()",
 	"sibling element",
 	"box sizing",
-	"carousel", 
+	"carousel",
 	"background image",
 	"Salad Clurb"
 ]
@@ -124,7 +124,7 @@ var round3 = [
 	"Homeward Bound",
 	"span",
 	"repeater field",
-	"concatinate",
+	"concatenate",
 	"git init",
 	"git push master origin",
 	"dank meme",
@@ -147,18 +147,24 @@ var round3 = [
 
 
 // User clicks start button
-// Screen fades to play mode 
+// Screen fades to play mode
 $('.start-button').on('click', function(){
-	$('.screen-1').css('opacity', '0');
-	$('.screen-2').css('opacity', '1');
+	// $('.screen-1').css('opacity', '0');
+	// $('.screen-2').css('opacity', '1');
+	$('.screen-1')
+		.fadeOut()
+		.queue(function () {
+			$('.screen-2').fadeIn();
+			$(this).dequeue();
+		});
 	startGame();
 });
 // Clock is at 2:00min (120seconds)
-// Team 1 clicks start button and random chrades card appears 
+// Team 1 clicks start button and random chrades card appears
 var startGame = function(){
 	//start at 120 sec
 	var seconds = 120;
-	
+
 	var countdown = window.setInterval(function(){
 		//update div.timer with seconds left
 		$('.timer').html(seconds);
@@ -174,12 +180,12 @@ var startGame = function(){
 // Every time user hits space bar a new charades card appears and a point is added to that team's total
 // When clock reaches 0 an overlay appears asking for the next team to come up.
 // Round 2 begins
-// Team 1 clicks start button and random chrades card appears 
+// Team 1 clicks start button and random chrades card appears
 // Countdown clock begins
 // Every time user hits space bar a new charades card appears and a point is added to that team's total
 // When clock reaches 0, overlay appears asking for hte next team to come up.
 // Round 3 begins
-// Team 1 clicks start button and random chrades card appears 
+// Team 1 clicks start button and random chrades card appears
 // Countdown clock begins
 // Every time user hits space bar a new charades card appears and a point is added to that team's total
 // When clock reaches 0, overlay appears asking for hte next team to come up.

@@ -22,5 +22,15 @@ h1 {
 }
 
 .screen-2, .screen-3 {
-	opacity: 0;
+	/*opacity: 0;*/
+	display: none;
+}
+
+.timer {
+	height: 18px;
+}
+
+.charades-card {
+	display: inline-block;
+	border: 1px dotted #333;
 }
