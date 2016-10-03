@@ -1,7 +1,7 @@
 
-/* --------- Styles--------- */
+/* --------- Styles --------- */
 
-/* COLOURS -------------------*/
+/* COLOURS -----------------------*/
 
 /* 
 
@@ -10,8 +10,8 @@ Background
 white - #FFFFFF
 grey  - #EFEFED
 grey  - #ADB2A8 (block illustrations)
-red   - #D12026 (buttons)
-red   - #ED1C24 (buttons - hover)
+red   - #D12026 (red button)
+red   - #ED1C24 (red button - hover)
 blue  - #26A6C9 (blue button)
 black - #231F20 (blue button - hover)
 
@@ -27,7 +27,7 @@ red   - #ED1C24 (hover)
 
 */
 
-/*SETUP ---------------------*/
+/* SETUP -----------------------*/
 
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:700;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace, serif;font-size:1em;}pre{white-space:pre-wrap;word-wrap:break-word;}q{quotes:\201C \201D \2018 \2019;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-.5em;}sub{bottom:-.25em;}img{border:0;}svg:not(:root){overflow:hidden;}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,html input[type=button],/* 1 */
@@ -37,12 +37,10 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 /* Border-box box-sizing */
 *, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-/*FONTS ---------------------*/
+/* FONTS -----------------------*/
+
 @font-face {
 	font-family: 'hyFont';
-	/*font-style: normal;
-	font-weight: 700;
-	font-stretch: normal;*/
 	src: url('../nimbus-sans-l/NimbusSanL-Reg.otf');
 }
 
@@ -50,6 +48,8 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 	font-family: 'hyFontBold';
 	src: url('../nimbus-sans-l/NimbusSanL-Bol.otf');
 }
+
+/* SHARED ----------------------*/
 
 body {
 	font-family: 'hyFont';
@@ -62,10 +62,6 @@ h1, h2, h3, h4, h5, h6 {
 	text-rendering: optimizeLegibility;
 }
 
-/*h1, h2, h3, h4, h5, h6 {
-	font-weight: normal;
-}*/
-
 button {
 	border: 0;
 	background-color: #231F20;
@@ -75,11 +71,15 @@ button {
 }
 
 button:hover {
-	background-color: #333;
+	background-color: #414042;
 }
 
 button:active {
 	background-color: #ED1C24;
+}
+
+button:focus {
+	outline: 1px solid #26A6C9;
 }
 
 .wrapper {
@@ -87,14 +87,11 @@ button:active {
 	margin: 0 auto;
 }
 
-.start-screen, .game-screen, .result-screen {
-	transition: opacity 0.4s;
-}
-
 .game-screen, .result-screen {
-	/*opacity: 0;*/
 	display: none;
 }
+
+/* START SCREEN ----------------*/
 
 .rule-list {
 	padding: 0;
@@ -140,11 +137,7 @@ button:active {
 	color: red;
 }
 
-/* Game Screen */
-
-.scoreboard {
-	/*border: 1px solid green;*/
-}
+/* GAME SCREEN -----------------*/
 
 .score-container {
 	display: flex;
@@ -220,6 +213,8 @@ button:active {
 .game-screen > .btn-container {
 	justify-content: center;
 }
+
+/* FOOTER ----------------------*/
 
 footer {
 	position: absolute;
