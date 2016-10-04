@@ -2,90 +2,143 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>HackerYou Charades</title>
-
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="images/favicon.png" />
 	<!-- Responsive -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HackerYou Charades</title>
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="images/ghost-space-killah.png">	
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 
 </head>
 <body>
-
-<!-- SCREEN 1  -->
-	<div class="screen-1">
-		<div>
+	<div class="wrapper">
+		<header>
 			<h1>HackerYou Charades</h1>
-			<h2>3 Rounds, 2 Teams, 1 Winner</h2>
-		</div>
+		</header>
 
-		<div> 
-			<h3>Rules</h3>
-			<ol>
-				<li>The first rule of HackerYou charades is that you don't talk about HackerYou charades (...because it's charades)</li>
-				<li>Divide into two teams.</li>
-				<li>There are three rounds. Each round you must select a different tribute to act out the word on the card.</li>
-				<li>You have 90 seconds to act out as many cards as possible. Use the space bar to move to the next card.</li>
-				<li>You can only move to the next card when your team has guessed correctly.</li>
-			</ol>
-		</div>
+		<!-- SCREEN 1  -->
+		<section class="start-screen">
+			<div>
+				<h2>3 Rounds. 2 Teams. 1 Winner.</h2>
+			</div>
 
-		<div>
-			<button class="start-button">Start!</button>
-		</div>
-	</div>
+			<div>
+				<h3>Rules</h3>
+				<ol class="rule-list">
+					<li>
+						<span class="rule-icon">
+							<i class="ion ion-ios-chatboxes ion-icon-stack" aria-hidden="true">
+								<i class="ion ion-android-close" aria-hidden="true"></i>
+							</i>
+						</span>					
+						<span class="rule">The first rule of HackerYou charades is that you don't talk about HackerYou charades (...because it's charades).</span>					
+					</li>
+					<li>
+						<span class="rule-icon team-icon"><i class="ion ion-ios-people" aria-hidden="true"></i><span class="superscript">&times;2</span></span>
+						<span class="rule">Divide into two teams.</span>					
+					</li>
+					<li>
+						<span class="rule-icon"><i class="ion ion-android-more-vertical" aria-hidden="true"></i></span>
+						<span class="rule">There are three rounds. Each round you must select a different tribute to act out the word on the card.</span>					
+					</li>
+					<li>
+						<span class="rule-icon"><i class="ion ion-ios-timer" aria-hidden="true"></i></span>					
+						<span class="rule">You have 90 seconds to act out as many cards as possible. Use the space bar to move to the next card.</span>					
+					</li>
+					<li>
+						<span class="rule-icon"><i class="ion ion-checkmark" aria-hidden="true"></i></span>
+						<span class="rule">You can only move to the next card when your team has guessed correctly.</span>
+					</li>
+				</ol>
+			</div>
 
-<!-- SCREEN 2 -->
-	<div class="screen-2">
-		<div>
-			<h1>HackerYou Charades</h1>
-			<h2>3 Rounds, 2 Teams, 1 Winner</h2>
-		</div>
+			<div>
+				<button class="start-btn">Start!</button>
+			</div>
+		</section><!-- /.start-screen -->
 
-		<div class="timer">
-		</div>
+		<!-- SCREEN 2 -->
+		<section class="game-screen">
+			<div>
+				<h2 class="current-turn"></h2>
+			</div>
 
-		<div class="charades-card">
+			<div class="scoreboard">
+				<div class="timer-container">
+					<h3>Time</h3>
+					<div class="timer">
+						<span class="min"></span>
+						<span class="divider">:</span>
+						<span class="sec"></span>
+					</div><!-- /.timer -->
+				</div><!-- /.timer-container -->
 
-		</div>
-		
-		<div class="next-button">
-			<button>
-			</button>
-		</div>
+				<div class="score-container">
+					<div>
+						<h3>Team 1</h3>
+						<div class="team-one-score"></div><!-- /.team-one-score -->
+					</div>
+
+					<div>
+						<h3>Round</h3>
+						<div class="round"></div><!-- /.round -->
+					</div>
+
+					<div>
+						<h3>Team 2</h3>
+						<div class="team-two-score"></div><!-- /.team-two-score -->
+					</div>
+				</div><!-- /.score-container -->
+			</div><!-- /.scoreboard -->
+
+			<div class="card-container">
+				<div class="charades-card"></div><!-- /.charades-card -->
+			</div><!-- /.card-container -->
+
+			<div class="btn-container">
+				<button class="next-btn"></button>
+			</div><!-- /.btn-container -->
+		</section><!-- /.game-screen -->
+
+		<!-- SCREEN 3 -->
+		<section class="result-screen">
+			<div>
+				<h2 class="winner"></h2>
+			</div>
+
+			<div class="scores">
+				<h3>Final Score</h3>
+				<p>Team One: <span class="team-one-score"></span> points</p>
+				<p>Team Two: <span class="team-two-score"></span> points</p>
+			</div><!-- /.scores -->
+
+			<div class="btn-container">
+				<button class="new-game-btn">New Game</button>
+			</div><!-- /.btn-container -->
+		</section><!-- /.result-screen -->
 
 		<footer>
-		<p>Made with love by the GhostSpace Killahs</p>
+			<p>Made with <!-- love --><i class="ion-heart" aria-hidden="true"></i> by the GhostSpace Killahs</p>
+			<!-- <p><i class="ion-code" aria-hidden="true"></i> with <i class="ion-heart" aria-hidden="true"></i> by the GhostSpace Killahs</p> -->
 		</footer>
-	</div>
-
-	<!-- SCREEN 3 -->
-	<div class="screen-3">
-
-		<div>
-			<h1>HackerYou Charades</h1>
-			<h2>3 Rounds, 2 Teams, 1 Winner</h2>
-		</div>
-
-
-		<footer>
-		<p>Made with love by the GhostSpace Killahs</p>
-		</footer>
-	</div>
-
+	</div><!-- /.wrapper -->
+	
 	<!-- Underscore.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 	<!-- Smooth Scroll -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/1.7.2/jquery.smooth-scroll.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/1.7.2/jquery.smooth-scroll.min.js"></script> -->
+
 	<!-- JavaScript -->
 	<script src="js/scripts.js"></script>
-
 </body>
 
 </html>
