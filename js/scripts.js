@@ -38,11 +38,11 @@
 var hyCharades = {};
 
 /**
- * GAME MODEL 
- *  
- * The hyCharades.model object contains a series of functions 
+ * GAME MODEL
+ *
+ * The hyCharades.model object contains a series of functions
  * that establish the rules of the game.
- */ 
+ */
 
 hyCharades.model = {};
 
@@ -59,6 +59,7 @@ hyCharades.model.init = function() {
 		}
 	];
 	hyCharades.model.turn_no = 0;
+	hyCharades.model.counter = 0;
 	hyCharades.model.round_no = 0;
 	hyCharades.model.current_team = {};
 	hyCharades.model.seconds_per_turn = 90;
@@ -151,7 +152,7 @@ hyCharades.model.init = function() {
 			"repeater field",
 			"concatenate",
 			"git init",
-			"git push master origin",
+			"git push origin master",
 			"dank meme",
 			"if...else statement",
 			"jQuery",
@@ -183,20 +184,16 @@ hyCharades.model.nextRound = function() {
 };
 
 hyCharades.model.getCurrentTeamIndex = function() {
-	return _.findIndex(hyCharades.model.teams, function(team) { 
-		return team.name === hyCharades.model.current_team.name 
+	return _.findIndex(hyCharades.model.teams, function(team) {
+		return team.name === hyCharades.model.current_team.name
 	});
 };
 
 hyCharades.model.addScore = function() {
 	var index = hyCharades.model.getCurrentTeamIndex();
-	
+
 	// Increment the current team's points with the round multiplier
 	hyCharades.model.teams[index].points += hyCharades.model.round_no;
-
-	console.log('teams[', index, ']: +', hyCharades.model.round_no);
-	console.log(hyCharades.model.teams[0].name, ': ', hyCharades.model.teams[0].points);
-	console.log(hyCharades.model.teams[1].name, ': ', hyCharades.model.teams[1].points);
 };
 
 hyCharades.model.gameResult = function() {
@@ -206,13 +203,17 @@ hyCharades.model.gameResult = function() {
 	;
 };
 
+hyCharades.counter = function() {
+	hyCharades.model.counter++;
+}
+
 /**
  * GAME CONTROLLERS
- * 
+ *
  * Functions within the hyCharades root namespace process user input,
- * make changes to the game model data, by calling functions within hyCharades.model, 
+ * make changes to the game model data, by calling functions within hyCharades.model,
  * and update the game state/view accordingly, by manipulating DOM elements.
- */ 
+ */
 
 // Arrive on page and the avatar screen is displayed with instructions
 hyCharades.startGame = function() {
@@ -231,15 +232,11 @@ hyCharades.startGame = function() {
 hyCharades.startTurn = function() {
 	// Determine the current team and turn number
 	hyCharades.model.nextTurn();
-	
+
 	// Determine the current round
 	if (hyCharades.model.current_team.name === hyCharades.model.teams[0].name) {
 		hyCharades.model.nextRound();
-	}	
-	
-	console.info('round: ', hyCharades.model.round_no);
-	console.info('turn: ', hyCharades.model.turn_no);
-	console.info('current team: ', hyCharades.model.current_team.name);
+	}
 
 	// Set the 'next' button text (next card)
 	hyCharades.$.get('.next-btn')
@@ -250,6 +247,17 @@ hyCharades.startTurn = function() {
 				.fadeIn()
 				.focus()
 		});
+
+	// Set the 'skip' button text
+	hyCharades.$.get('.skip-btn')
+		.off()
+		.fadeOut(function() {
+			hyCharades.$.get('.skip-btn')
+			.text("Skip")
+			.fadeIn()
+			.focus()
+		});
+
 
 	// Show the current turn details
 	hyCharades.$.get('.current-turn').text(
@@ -312,7 +320,7 @@ hyCharades.setTimer = function() {
 			hyCharades.$.get('.timer-container > h3').text("Time's up!");
 			// End the turn
 			hyCharades.endTurn();
-		}		
+		}
 
 		seconds--; // decrease seconds by 1
 
@@ -333,9 +341,6 @@ hyCharades.nextCard = function(cards) {
 		deck = cards;
 	}
 
-	console.log('deck', deck);
-	console.log('Deck length: ', deck.length);	
-
 	// Show the card and remove it from the deck
 	hyCharades.$.get('.charades-card').html(deck.pop());
 
@@ -348,14 +353,40 @@ hyCharades.nextCard = function(cards) {
 		// Draw the next card
 		hyCharades.nextCard(deck);
 	});
+
+	// Add click event listener to 'skip' button
+	hyCharades.$.get('.skip-btn').one('click', function() {
+
+		//Increment counter by one
+		hyCharades.counter();
+
+		// If the button has been clicked less than 5 times
+		if(hyCharades.model.counter < 5) {
+
+			// Disable 'next' button
+			hyCharades.$.get('.next-btn').off();
+
+			//Draw next card
+			hyCharades.nextCard(deck);
+
+			// If the button has been clicked more than 5 times
+		} else {
+
+			//Disable Skip function
+			hyCharades.$.get('.skip-btn').off();
+		}
+
+	});
 };
 
 hyCharades.endTurn = function() {
+	// fadeout skip buttona and take off event listener
+	hyCharades.$.get('.skip-btn').fadeOut();
 	// Switch 'next' button text and click event listener
 	hyCharades.$.get('.next-btn')
 		.off()
 		.fadeOut(function() {
-			// If this is not the last turn (6), 
+			// If this is not the last turn (6),
 			// start the next turn when the 'next' button is clicked
 			if (hyCharades.model.turn_no < 6) {
 				hyCharades.$.get('.next-btn')
@@ -380,14 +411,14 @@ hyCharades.endGame = function() {
 	// Hide the game screen
 	hyCharades.$.get('.game-screen')
 		.fadeOut(function () {
-			// Declare a winner (or a tie)			
+			// Declare a winner (or a tie)
 			hyCharades.$.get('.winner').text(hyCharades.model.gameResult());
 			// Show final scores
 			hyCharades.updateScoreboard();
 			// Show the result screen
 			hyCharades.$.get('.result-screen').fadeIn();
 			// Add click event listener to 'new game' button
-			// Reset the game and return to start screen 
+			// Reset the game and return to start screen
 			// when the 'new game' button is clicked
 			hyCharades.$.get('.new-game-btn')
 				.one('click', function() {
@@ -416,9 +447,9 @@ $(function() {
 	hyCharades.init();
 });
 
-/** 
+/**
  * SELECTOR CACHE
- * 
+ *
  * Define a cache object to store jQuery selectors for improved performance,
  * using a constructor function.
  * Source: "Selector Caching in jQuery" by Eric Mann | ttmm.io/tech/selector-caching-jquery/
@@ -442,7 +473,7 @@ function Selector_Cache() {
 /**
  * Create an instance of the selector cache in the app namespace.
  * Usage $( '#element' ) becomes hyCharades.$.get( '#element' )
- */ 
+ */
 hyCharades.$ = new Selector_Cache();
 
 
@@ -466,4 +497,3 @@ When clock reaches 0, overlay appears asking for hte next team to come up.
 Final points are displayed on the screen.
 
 */
-
