@@ -40,196 +40,208 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 /* FONTS -----------------------*/
 
 @font-face {
-	font-family: 'hyFont';
-	src: url('../nimbus-sans-l/NimbusSanL-Reg.otf');
+    font-family: 'hyFont';
+    src: url('../nimbus-sans-l/NimbusSanL-Reg.otf');
 }
 
 @font-face {
-	font-family: 'hyFontBold';
-	src: url('../nimbus-sans-l/NimbusSanL-Bol.otf');
+    font-family: 'hyFontBold';
+    src: url('../nimbus-sans-l/NimbusSanL-Bol.otf');
 }
 
 /* SHARED ----------------------*/
 
 body {
-	font-family: 'hyFont';
-	text-rendering: optimizeLegibility;
-	color: #231F20;
+    font-family: 'hyFont';
+    text-rendering: optimizeLegibility;
+    color: #231F20;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'hyFontBold';
-	text-rendering: optimizeLegibility;
+    font-family: 'hyFontBold';
+    text-rendering: optimizeLegibility;
 }
 
 button {
-	border: 0;
-	background-color: #231F20;
-	color: #fff;
-	font-size: 18px;
-	padding: 10px 15px;
+    border: 0;
+    background-color: #231F20;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 15px;
 }
 
 button:hover {
-	background-color: #414042;
+    background-color: #414042;
 }
 
 button:active {
-	background-color: #ED1C24;
+    background-color: #ED1C24;
 }
 
 button:focus {
-	outline: 1px solid #26A6C9;
+    outline: 1px solid #26A6C9;
+}
+
+.disabled,
+.disabled:hover,
+.disabled:active {
+    background-color: #ADB2A8;
+    pointer-events: none;
 }
 
 .wrapper {
-	width: 96%;
-	margin: 0 auto;
+    width: 96%;
+    margin: 0 auto;
 }
 
 .game-screen, .result-screen {
-	display: none;
+    display: none;
 }
 
 /* START SCREEN ----------------*/
 
 .rule-list {
-	padding: 0;
+    padding: 0;
 }
 
 .rule-list li {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .rule-list .ion {
-	font-size: 50px;
+    font-size: 50px;
 }
 
 .rule-icon {
-	flex: 0 0 81px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-right: 15px;
+    flex: 0 0 81px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
 }
 
 .team-icon {
-	padding-left: 19px;
+    padding-left: 19px;
 }
 
 .superscript {
-	align-self: flex-start;
-	font-size: 14px;
+    align-self: flex-start;
+    font-size: 14px;
 }
 
 .ion-icon-stack {
-	position: relative;
-	display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .ion-icon-stack > .ion {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font-size: 42px;
-	color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 42px;
+    color: red;
 }
 
 /* GAME SCREEN -----------------*/
 
 .score-container {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .score-container > div {
-	border: 1px solid #414042;
-	background-color: #ADB2A8;
-	/*flex: 1;*/
-	flex: 1 1 33%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+    border: 1px solid #414042;
+    background-color: #ADB2A8;
+    /*flex: 1;*/
+    flex: 1 1 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .score-container > div:not(:last-child) {
-	border-right: 0;
+    border-right: 0;
 }
 
 .score-container h3 {
-	margin: 0;
-	color: #414042;
+    margin: 0;
+    color: #414042;
 }
 
 .round,
 .team-one-score,
 .team-two-score {
-	font-size: 30px;
+    font-size: 30px;
 }
 
 .timer-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: #414042;
-	color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #414042;
+    color: #fff;
 }
 
 .timer-container h3 {
-	margin: 0;
-	font-size: 1.1rem;
-	font-weight: normal;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: normal;
 }
 
 .timer {
-	font-size: 30px;
+    font-size: 30px;
 }
 
 .card-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 40px;
-	padding: 30px;
-	background-color: #EFEFED;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 30px;
+    background-color: #EFEFED;
 }
 
-.charades-card {	
-	padding: 20px;	
-	background-color: #FFF;	
-	font-family: 'hyFontBold';
-	font-size: 45px;
-	text-rendering: optimizeLegibility;
+.charades-card {
+    padding: 20px;
+    background-color: #FFF; 
+    font-family: 'hyFontBold';
+    font-size: 45px;
+    text-rendering: optimizeLegibility;
 }
 
 .btn-container {
-	display: flex;
+    display: flex;
 }
 
 .game-screen > .btn-container {
-	justify-content: center;
+    justify-content: center;
+}
+
+.skip-btn {
+    margin-left: 15px;
+    padding: 10px 37px;
 }
 
 /* FOOTER ----------------------*/
 
 footer {
-	position: absolute;
-	bottom: 0;
-	/*right: 0;*/
-	right: 2%; /* assumes 96% wrapper */
+    position: absolute;
+    bottom: 0;
+    /*right: 0;*/
+    right: 2%; /* assumes 96% wrapper */
 }
 
 footer > p {
-	text-align: right;
+    text-align: right;
 }
 
 footer > p > .ion-code, 
 footer > p > .ion-heart {
-	font-size: 18px;
-	position: relative;
-	top: 2px;
+    font-size: 18px;
+    position: relative;
+    top: 2px;
 }
